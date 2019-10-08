@@ -10,29 +10,19 @@
 
 
 #chessboard {
-    
+    display:none;
     margin: 20px;
     border: 2px solid #333;
 }
 
-.black {
-    float: left;
-    width: 78px;
-    height: 78px;
-	border: 1px solid #333;
-    background-color: #999;
-     
-    text-align:center;
-    display: table-cell;
-    vertical-align:middle;
-}
+
 .white {
     float: left;
     width: 78px;
     height: 78px;
 	border: 1px solid #333;
     background-color: #fff;
-    
+
     text-align:center;
     display: table-cell;
     vertical-align:middle;
@@ -53,34 +43,27 @@
 <div>
 
 <div>
-<p>INGRESE EL TAMAÑO DEL TABLERO</p>
+<p>INGRESE LAS DIMENSIONES DEL TABLERO</p>
 </div>
 
 <div>
   <input id="itamano" type="text" name="">
-  
+
   <input id="btamano" type="button" value="aceptar">
 
 </div>
 <div>
-<p>INGRESE EL numero de iteraciones</p>
+<p>INGRESE EL NUMERO DE ITERACIONES</p>
 </div>
 <div>
   <input id="iteraciones" type="text" name="">
-  
-  <input id="biteraciones" type="button" value="aceptar">
+
+  <input id="biteraciones" type="button" value="comenzar">
 
 </div>
 
-<div>
-<p>comenzar</p>
-</div>
-<div>
-  
-  
-  <input id="comen" type="button" value="aceptar">
 
-</div>
+
 </div>
 
 <div id="chessboard">
@@ -109,7 +92,7 @@ var niter;
 
 var bttamano;
 var btiteraciones;
-var btcomen;
+
 //variables i es filas y j es columnas
 var i=1;
 var j=1;
@@ -123,16 +106,17 @@ bttamano=document.getElementById("btamano");
 btiteraciones=document.getElementById("biteraciones");
 niter=document.getElementById("iteraciones");
 
-btcomen=document.getElementById("comen");
 
 
-btcomen.onclick=function() {progreso(); };
+
+
 
 //uno
 bttamano.onclick=function() { 
 
 ab=ntamano.value;
 bc=ab*80;
+tablero.style.display = "block";
 tablero.style.height=bc;
 tablero.style.width=bc;
 ab=parseInt(ab)+1;
@@ -145,16 +129,16 @@ btiteraciones.onclick=function() {        rk=niter.value;
 							for(xz=1;xz<rk;xz++)
 							{abx=parseInt(abx)+600;
 							setTimeout(tiempo1,abx);}	  };
-								  
 
-								  
+
+
 function tiempo1()
 {escaneo();
  setTimeout(progreso,100);}
 
 
 
-								  
+
 function agregarcuadros ()
 
 {
@@ -178,15 +162,15 @@ for (i=1;i<ab;i++)
 	    cuadross[i][j].ni=i;
 	    cuadross[i][j].nj=j;	
           cuadross[i][j].onclick=function() {
-            
-		
+
+
 		if(zz[this.ni][this.nj])	
 		{this.style.backgroundColor="black";zz[this.ni][this.nj]=false;}
 		else
 		{this.style.backgroundColor="white";zz[this.ni][this.nj]=true;}
-		
+
 		}
-		  
+
           tablero.appendChild(cuadross[i][j]); 		
 	}
 }
@@ -204,7 +188,7 @@ for (i=1;i<ab;i++)
 
           var c1;
 	    var c2;
-		
+
           var d1;
 	    var d2;	
 
@@ -213,21 +197,21 @@ for (i=1;i<ab;i++)
 {
      for (j=1;j<ab;j++)
        {   
-	    
-	
+
+
 	    c1=cuadross[i][j].ni;
 	    c2=cuadross[i][j].nj;	
-	    
+
 	    d1=cuadross[i][j].ni;
 	    d2=cuadross[i][j].nj;
-	    
+
 	    for (k=1;k<9;k++)
 		{
 
 		 if(k==1)
 		 {  d1=parseInt(d1)-1;
 		    d2=parseInt(d2)-1;
-		 
+
 		  if(d1==ab||d2==ab)
 		   {}
 		   else
@@ -236,19 +220,19 @@ for (i=1;i<ab;i++)
 			{}
 		    else
 			{ if(cuadross[d1][d2].style.backgroundColor=="black")
-			 
+
 		        {conteo[c1][c2]=parseInt(conteo[c1][c2])+1;}
 		      }	  
 		    }
 		    d1=cuadross[i][j].ni;
 	          d2=cuadross[i][j].nj;	
-		  
+
 		  }
-		  
+
 		  if(k==2)
-		  
+
 		  {   d1=parseInt(d1)-1;
-		      
+
                if(d1==ab||d2==ab)
 		   {}
 		   else
@@ -257,17 +241,17 @@ for (i=1;i<ab;i++)
 			{}
 		    else
 			{ if(cuadross[d1][d2].style.backgroundColor=="black")
-			 
+
 		        {conteo[c1][c2]=parseInt(conteo[c1][c2])+1;}
 		      }	  
 		    }
-			
+
 		  d1=cuadross[i][j].ni;
 	        d2=cuadross[i][j].nj;	
 		  }
-		  
+
 		  if(k==3)
-		  
+
 		  {   d1=parseInt(d1)-1;
 		     d2=parseInt(d2)+1;
                if(d1==ab||d2==ab)
@@ -278,17 +262,17 @@ for (i=1;i<ab;i++)
 			{}
 		    else
 			{ if(cuadross[d1][d2].style.backgroundColor=="black")
-			 
+
 		        {conteo[c1][c2]=parseInt(conteo[c1][c2])+1;}
 		      }	  
 		    }
-			
+
 		  d1=cuadross[i][j].ni;
 	        d2=cuadross[i][j].nj;	
 		  }
-		  
+
 		  if(k==4)
-		  
+
 		  {   
 		      d2=parseInt(d2)-1;
                if(d1==ab||d2==ab)
@@ -299,17 +283,17 @@ for (i=1;i<ab;i++)
 			{}
 		    else
 			{ if(cuadross[d1][d2].style.backgroundColor=="black")
-			 
+
 		        {conteo[c1][c2]=parseInt(conteo[c1][c2])+1;}
 		      }	  
 		    }
-			
+
 		  d1=cuadross[i][j].ni;
 	        d2=cuadross[i][j].nj;	
 		  }
-		  
+
 		  if(k==5)
-		  
+
 		  {   
 		     d2=parseInt(d2)+1;
                if(d1==ab||d2==ab)
@@ -320,17 +304,17 @@ for (i=1;i<ab;i++)
 			{}
 		    else
 			{ if(cuadross[d1][d2].style.backgroundColor=="black")
-			 
+
 		        {conteo[c1][c2]=parseInt(conteo[c1][c2])+1;}
 		      }	  
 		    }
-			
+
 		  d1=cuadross[i][j].ni;
 	        d2=cuadross[i][j].nj;	
 		  }
-		  
+
 		  if(k==6)
-		  
+
 		  {  d1=parseInt(d1)+1;
 		     d2=parseInt(d2)-1;
                if(d1==ab||d2==ab)
@@ -341,19 +325,19 @@ for (i=1;i<ab;i++)
 			{}
 		    else
 			{ if(cuadross[d1][d2].style.backgroundColor=="black")
-			 
+
 		        {conteo[c1][c2]=parseInt(conteo[c1][c2])+1;}
 		      }	  
 		    }
-			
+
 		  d1=cuadross[i][j].ni;
 	        d2=cuadross[i][j].nj;	
 		  }
-		  
+
 		  if(k==7)
-		  
+
 		  {   d1=parseInt(d1)+1;
-		     
+
                if(d1==ab||d2==ab)
 		   {}
 		   else
@@ -362,17 +346,17 @@ for (i=1;i<ab;i++)
 			{}
 		    else
 			{ if(cuadross[d1][d2].style.backgroundColor=="black")
-			 
+
 		        {conteo[c1][c2]=parseInt(conteo[c1][c2])+1;}
 		      }	  
 		    }
-			
+
 		  d1=cuadross[i][j].ni;
 	        d2=cuadross[i][j].nj;	
 		  }
-		  
+
 		  if(k==8)
-		  
+
 		  {   d1=parseInt(d1)+1;
 		      d2=parseInt(d2)+1;
                if(d1==ab||d2==ab)
@@ -383,25 +367,25 @@ for (i=1;i<ab;i++)
 			{}
 		    else
 			{ if(cuadross[d1][d2].style.backgroundColor=="black")
-			 
+
 		        {conteo[c1][c2]=parseInt(conteo[c1][c2])+1;}
 		      }	  
 		    }
-			
+
 		  d1=cuadross[i][j].ni;
 	        d2=cuadross[i][j].nj;	
 		  }
-		  
-		
+
+
 		}
-		    
-	 
-		
-          
+
+
+
+
 	}
 
 
-	
+
 }	  
 
 
@@ -432,11 +416,11 @@ for (i=1;i<ab;i++)
    else
    {cuadross[i][j].style.backgroundColor="white";}
   }
-  
+
   }
   }
-  
- 
+
+
 
 }
 
